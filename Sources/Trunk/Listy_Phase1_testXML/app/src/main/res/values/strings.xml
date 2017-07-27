@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">Listy_Phase1_testXML</string>
+
+    <string-array name="fav_item_name">
+        <item>Pâte</item>
+        <item>Riz</item>
+        <item>Semoule</item>
+        <item>Poire</item>
+        <item>Oignon</item>
+    </string-array>
+
+    <string-array name="item_default">
+        <item>This is the list of Grocery</item>
+        <item>Use add button to add a new item the list</item>
+        <item>Or click on me to modify the item</item>
+        <item>Don\'t forget to name the list</item>
+        <item>And of course to save it</item>
+    </string-array>
+
+    <string-array name="item_default_description">
+        <item>Not implemented</item>
+        <item>Not implemented</item>
+        <item>Not implemented</item>
+        <item>Not implemented</item>
+        <item>Not implemented</item>
+    </string-array>
+
+
+</resources>
