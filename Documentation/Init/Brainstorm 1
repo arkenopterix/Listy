@@ -1,0 +1,71 @@
+# Listy phase 1:
+
+## Vue: Liste de course
+
+### Aspect
+- Avoir barre de menu horizontale au dessus de l'écran
+     -- option création liste
+     -- enregistrer liste courante
+     -- option ouvrir liste existante
+     -- ajout item favoris (lien vers la vue "Item favoris")
+
+- Nom de la liste de course
+
+- liste des items dans la liste de course
+    -- nom item
+    -- quantité
+    -- catégories
+- bouton ajouter item
+
+### Fonctionnalités:
+- Créer nouvelle liste de course
+- supprimer liste 
+- Persistance de la liste (sauvegarde de la liste)
+- éditer nom de la liste
+- Avoir items par défaut préchargés
+- ajouter des items
+- ajouter des items favoris
+
+
+
+## Vue : Edition Item
+### Aspect
+- Nom de l'item
+- description de l'item
+- quantité
+- unité
+- bouton favoriser
+- bouton OK
+-bouton Cancel
+
+
+### Fonctionnalités:
+- Créer item
+- modifier item
+- supprimer item liste
+- sauvegarder l'item dans les favoris
+- retourner à la vue précédente sans prise en compte des modifs
+- retourner à la vue précédente avec prise en compte des modifs
+
+
+
+## Vue: Liste Favoris
+### Aspect
+- bordeau avec titre "Favoris"
+- liste des items favoris sauvegardés
+
+### Fonctionnalités:
+- ajout de l'item favori à la liste de course courante avec la quantité souhaité
+- édition dun item favori
+
+# Idées Listy phase 2
+
+## Fonctionnalités
+
+- pouvoir ajouter des catégories aux items
+-pouvoir éditer la quantité d'un item à partir de la vue liste de course
+- pouvoir trier la liste par catégories
+- liste pré-établie d'items courants
+- champ unité intélligent (avec liste pré-établie d'unités)
+
+- pouvoir créer des groupes d'items favoris qui composent une recette, et pouvoir ajouter des recettes à une liste de courses (la liste de course fait le calcul auto des quantité lorsque deux recettes emploient les mêmes items)
