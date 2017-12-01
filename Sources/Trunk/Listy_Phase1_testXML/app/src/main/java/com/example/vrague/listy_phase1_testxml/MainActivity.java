@@ -9,20 +9,18 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.vrague.listy_phase1_testxml.Models.DatabaseAccess;
-import com.example.vrague.listy_phase1_testxml.Models.ItemCourse;
+import com.example.vrague.listy_phase1_testxml.Models.GroceryItem;
 
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private ListView main_ListView;
     private String[] default_startList;
-    private List<ItemCourse> itemCourses;
+    private List<GroceryItem> currentGroceryItemList;
     private DatabaseAccess databaseAccess;
 
     private Button main_btnAdd;
@@ -75,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void addTest(){
         databaseAccess.open();
-        ItemCourse newItem = new ItemCourse();
+        GroceryItem newItem = new GroceryItem();
         newItem.setNameItem("TEst");
         newItem.setDescriptionItem(("la bbd marche"));
         newItem.setQuantityItem("defrf");
@@ -85,19 +83,19 @@ public class MainActivity extends AppCompatActivity {
         databaseAccess.close();
     }
 
-    private List<ItemCourse> getItemCourses(){
+    private List<GroceryItem> getCurrentGroceryItemList(){
         databaseAccess.open();
-        List<ItemCourse> list = databaseAccess.getItemCourses();
+        List<GroceryItem> list = databaseAccess.getItemCourses();
         databaseAccess.close();
         return list;
     }
 
     private void updateListView(){
-        this.itemCourses = getItemCourses();
+        this.currentGroceryItemList = getCurrentGroceryItemList();
 
         //Create the custom adapter
-        ItemCourseAdapter adapter = new ItemCourseAdapter(this, itemCourses);
-        //ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, itemCourses);
+        ItemCourseAdapter adapter = new ItemCourseAdapter(this, currentGroceryItemList);
+        //ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, currentGroceryItemList);
         this.main_ListView.setAdapter(adapter);
     }
 
@@ -119,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void addItem (){
-        Intent intent = new Intent(this, EditItemActivity.class);
+        Intent intent = new Intent(this, EditGroceryItemActivity.class);
         startActivity(intent);
     }
 
@@ -130,17 +128,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void editItem(int index){
-        ItemCourse item = itemCourses.get(index);
-        Intent intent = new Intent(this, EditItemActivity.class);
+        GroceryItem item = currentGroceryItemList.get(index);
+        Intent intent = new Intent(this, EditGroceryItemActivity.class);
         intent.putExtra("ITEMCOURSE", item);
         startActivity(intent);
     }
 
 
 
-    private class ItemCourseAdapter extends ArrayAdapter<ItemCourse>{
+    private class ItemCourseAdapter extends ArrayAdapter<GroceryItem>{
 
-        public ItemCourseAdapter(Context context, List<ItemCourse> objects){
+        public ItemCourseAdapter(Context context, List<GroceryItem> objects){
             super(context, 0, objects);
         }
 
@@ -152,7 +150,7 @@ public class MainActivity extends AppCompatActivity {
             TextView txtName = (TextView) convertView.findViewById(R.id.list_nameItem);
             TextView txtQuantity = (TextView) convertView.findViewById(R.id.list_quantityItem);
             TextView txtUnit = (TextView) convertView.findViewById(R.id.list_unitItem);
-            ItemCourse itemCourse = itemCourses.get(position);
+            GroceryItem itemCourse = currentGroceryItemList.get(position);
             txtName.setText(itemCourse.getNameItem());
             txtQuantity.setText(itemCourse.getQuantityItem());
             txtUnit.setText(itemCourse.getUnitItem());

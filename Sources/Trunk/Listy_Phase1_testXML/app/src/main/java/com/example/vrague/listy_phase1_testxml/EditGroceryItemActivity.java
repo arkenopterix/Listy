@@ -13,10 +13,10 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.vrague.listy_phase1_testxml.Models.DatabaseAccess;
-import com.example.vrague.listy_phase1_testxml.Models.ItemCourse;
+import com.example.vrague.listy_phase1_testxml.Models.GroceryItem;
 
 
-public class EditItemActivity extends AppCompatActivity {
+public class EditGroceryItemActivity extends AppCompatActivity {
 
     private Button edit_btnValidation;
     private Button edit_btnCancel;
@@ -27,14 +27,14 @@ public class EditItemActivity extends AppCompatActivity {
     private EditText edit_etQuantity;
     private EditText edit_etUnit;
 
-    private ItemCourse item;
+    private GroceryItem item;
     private DatabaseAccess databaseAccess;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_edition_item);
+        setContentView(R.layout.activity_grocery_item_edit);
 
         findGUI();
         this.databaseAccess = DatabaseAccess.getInstance(getApplicationContext());
@@ -80,7 +80,7 @@ public class EditItemActivity extends AppCompatActivity {
         Bundle bundle = intent.getExtras();
 
         if(bundle != null){
-            item = (ItemCourse) bundle.get("ITEMCOURSE");
+            item = (GroceryItem) bundle.get("ITEMCOURSE");
             if(item !=null){
                 this.edit_etNameItem.setText(item.getNameItem());
                 this.edit_etDescription.setText(item.getDescriptionItem());
@@ -93,7 +93,7 @@ public class EditItemActivity extends AppCompatActivity {
 
     private void createNewItem(){
         databaseAccess.open();
-        ItemCourse newItem = new ItemCourse();
+        GroceryItem newItem = new GroceryItem();
         newItem.setNameItem(edit_etNameItem.getText().toString());
         newItem.setDescriptionItem((edit_etDescription.getText().toString()));
         newItem.setQuantityItem(edit_etQuantity.getText().toString());
@@ -116,7 +116,7 @@ public class EditItemActivity extends AppCompatActivity {
     }
 
     private void createNewFav(){
-        Toast.makeText(EditItemActivity.this, "The favorite item has been add to the list", Toast.LENGTH_SHORT).show();
+        Toast.makeText(EditGroceryItemActivity.this, "The favorite item has been add to the list", Toast.LENGTH_SHORT).show();
     }
 
 }

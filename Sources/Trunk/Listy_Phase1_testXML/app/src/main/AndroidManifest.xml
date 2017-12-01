@@ -18,12 +18,10 @@
         </activity>
         <activity
             android:name=".FavoriteActivity"
-            android:label="Favorite Items" >
-        </activity>
+            android:label="Favorite Items"></activity>
         <activity
-            android:name=".EditItemActivity"
-            android:label="Edit or create an item">
-        </activity>
+            android:name=".EditGroceryItemActivity"
+            android:label="Edit or create an item"></activity>
     </application>
 
 </manifest>

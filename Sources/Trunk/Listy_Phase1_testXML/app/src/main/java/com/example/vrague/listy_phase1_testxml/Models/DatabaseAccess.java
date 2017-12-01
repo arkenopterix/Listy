@@ -42,7 +42,7 @@ public class DatabaseAccess {
         }
     }
 
-    public  void insertItemCourse(ItemCourse itemCourse){
+    public  void insertItemCourse(GroceryItem itemCourse){
         ContentValues values = new ContentValues();
         values.put("item_name",itemCourse.getNameItem());
         values.put("item_description", itemCourse.getDescriptionItem());
@@ -51,12 +51,12 @@ public class DatabaseAccess {
         database.insert("ItemCourse", null, values);
     }
 
-    public List<ItemCourse> getItemCourses(){
-        List<ItemCourse> list = new ArrayList<>();
+    public List<GroceryItem> getItemCourses(){
+        List<GroceryItem> list = new ArrayList<>();
         Cursor cursor = database.rawQuery("SELECT * FROM ItemCourse", null);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()){
-            ItemCourse itemCourse = new ItemCourse();
+            GroceryItem itemCourse = new GroceryItem();
             itemCourse.setNameItem(cursor.getString(0));
             itemCourse.setDescriptionItem(cursor.getString(1));
             itemCourse.setQuantityItem(cursor.getString(2));
@@ -68,7 +68,7 @@ public class DatabaseAccess {
         return list;
     }
 
-    public void updateItemCourse(ItemCourse oldItem, ItemCourse newItem){
+    public void updateItemCourse(GroceryItem oldItem, GroceryItem newItem){
         ContentValues values = new ContentValues();
         values.put("item_name", newItem.getNameItem());
         values.put("item_description", newItem.getDescriptionItem());
@@ -77,7 +77,7 @@ public class DatabaseAccess {
         database.update("ItemCourse",values, null, new String[] {oldItem.getNameItem()});
     }
 
-    public void deleteItemCourse(ItemCourse itemCourse){
+    public void deleteItemCourse(GroceryItem itemCourse){
         database.delete("ItemCourse", "item_name=?", new String[]{itemCourse.getNameItem()});
         database.close();
     }
