@@ -7,10 +7,39 @@ import java.io.Serializable;
  */
 
 public class GroceryItem implements Serializable {
+
+
+    private boolean was_updated;
+    private int id;
     private String nameItem;
     private String descriptionItem;
     private String quantityItem;
     private String unitItem;
+    private boolean is_favorite;
+
+    public boolean isWas_updated() {
+        return was_updated;
+    }
+
+    public void setWas_updated(boolean was_updated) {
+        this.was_updated = was_updated;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public boolean is_favorite() {
+        return is_favorite;
+    }
+
+    public void setIs_favorite(boolean is_favorite) {
+        this.is_favorite = is_favorite;
+    }
 
     public String getNameItem(){
         return nameItem;

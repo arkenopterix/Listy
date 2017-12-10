@@ -4,24 +4,30 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.vrague.listy_phase1_testxml.Models.DatabaseAccess;
 import com.example.vrague.listy_phase1_testxml.Models.GroceryItem;
+import com.example.vrague.listy_phase1_testxml.Models.GroceryList;
 
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private ListView main_ListView;
     private String[] default_startList;
+    private GroceryList currentGroceryList;
     private List<GroceryItem> currentGroceryItemList;
     private DatabaseAccess databaseAccess;
+    private EditText main_editTextListName;
+
 
     private Button main_btnAdd;
     private Button main_btnAddFav;
@@ -62,6 +68,16 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+        this.main_editTextListName.setOnEditorActionListener(new EditText.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                editListName();
+                return true;
+            }
+
+        });
+
     }
 
     private void findGui(){
@@ -69,6 +85,7 @@ public class MainActivity extends AppCompatActivity {
         this.main_ListView = (ListView) findViewById(R.id.main_listViewItem);
         this.main_btnAdd = (Button) findViewById(R.id.main_btnAdd);
         this.main_btnAddFav = (Button) findViewById(R.id.main_btnAddFav);
+        this.main_editTextListName = (EditText) findViewById(R.id.main_edListName);
     }
 
     private void addTest(){
@@ -121,6 +138,11 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+
+    private void editListName (){
+        this.currentGroceryList.setGroceryListName(this.main_editTextListName.getText().toString());
+
+    }
 
     private void viewFav () {
         Intent intent = new Intent(this, FavoriteActivity.class);

@@ -9,7 +9,7 @@ import android.database.sqlite.SQLiteDatabase;
  */
 
 public class DatabaseOpenHelper extends SQLiteOpenHelper {
-    private static final String DB_NAME = "itemCourse.db";
+    private static final String DB_NAME = "itemCourseV2.db";
     private static final int DB_VERSION = 1;
 
     public DatabaseOpenHelper(Context context){
@@ -18,7 +18,9 @@ public class DatabaseOpenHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db){
-        db.execSQL("CREATE TABLE ItemCourse(item_name TEXT PRIMARY KEY, item_description TEXT, item_quantity TEXT, item_unit TEXT);");
+        db.execSQL("CREATE TABLE GroceryItem_table(id int NOT NULL AUTO_INCREMENT PRIMARY KEY, item_name TEXT , item_description TEXT, item_quantity TEXT, item_unit TEXT);");
+        db.execSQL("CREATE TABLE GroceryList_table(id int NOT NULL AUTO_INCREMENT PRIMARY KEY, List_name TEXT);");
+        db.execSQL("CREATE TABLE GroceryItemListLinks_table(id int NOT NULL AUTO_INCREMENT PRIMARY KEY, id_groceryList int, id_groceryItem int);");
     }
 
     //A implémenter en cas de modification de la BDD

@@ -42,18 +42,38 @@ public class DatabaseAccess {
         }
     }
 
-    public  void insertItemCourse(GroceryItem itemCourse){
+    public  long insertItemCourse(GroceryItem itemCourse, long groceryListID){
+        // Function that takes as an input the groceryItem to insert in the database, and the groceryListID of the list we wish to link it to.
+        // returns: insertedID (value of the ID for the newly inserted object, and -1 if it failed.
+
+        // initialize the return value to  -1
+        long insertedID = -1;
+
         ContentValues values = new ContentValues();
         values.put("item_name",itemCourse.getNameItem());
         values.put("item_description", itemCourse.getDescriptionItem());
         values.put("item_quantity", itemCourse.getQuantityItem());
         values.put("item_unit", itemCourse.getUnitItem());
-        database.insert("ItemCourse", null, values);
+        insertedID = database.insert("GroceryItem_table", null, values);
+
+        return insertedID;
     }
 
-    public List<GroceryItem> getItemCourses(){
+    public List<GroceryItem> getItemCourses(long groceryListID){
+        // Function that retrieves all the groceryItems linked to the groceryListID given as an input
+        // returns: an arrayList containing the groceryItems found in the database linked to the given id
+
+        //Initialize return list
         List<GroceryItem> list = new ArrayList<>();
-        Cursor cursor = database.rawQuery("SELECT * FROM ItemCourse", null);
+
+        //compose SQL query
+        String sqlQuery = "SELECT * FROM GroceryItem_table WHERE  ";
+
+
+        //Query database
+        Cursor cursor = database.rawQuery(sqlQuery, null);
+
+        //Iterate on the result to store the retrieved data in an ArrayList of GroceryItems
         cursor.moveToFirst();
         while (!cursor.isAfterLast()){
             GroceryItem itemCourse = new GroceryItem();
