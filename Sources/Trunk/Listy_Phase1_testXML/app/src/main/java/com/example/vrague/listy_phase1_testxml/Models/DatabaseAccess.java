@@ -11,6 +11,8 @@ import com.example.vrague.listy_phase1_testxml.DatabaseOpenHelper;
 import java.util.ArrayList;
 import java.util.List;
 
+import static java.util.Objects.isNull;
+
 /**
  * Created by VRAGUE on 27/07/2017.
  */
@@ -42,7 +44,49 @@ public class DatabaseAccess {
         }
     }
 
-    public  long insertItemCourse(GroceryItem itemCourse, long groceryListID){
+    public void saveGroceryList(GroceryList groceryList) {
+        //function that takes a groceryList as an input in order to save it in the database.
+
+        //Decide whether the list must be inserted or updated
+        if (groceryList.getId() == -1) {
+            //list has no id, so it must be inserted
+            insertGroceryList(groceryList);
+        } else {
+            //List has an id, so it already was inserted once. It must be updated
+            updateGroceryList(groceryList);
+        }
+    }
+
+    public void insertGroceryList(GroceryList groceryList) {
+        //function that inserts a grocerylist item as well as it's item list
+
+        //First insert the groceryList in order to get it's id
+        long insertedListID = -1;
+
+        ContentValues listValues = new ContentValues();
+        listValues.put("list_name",groceryList.getGroceryListName());
+
+        insertedListID = database.insert("GroceryList_table", null, listValues);
+
+
+
+    }
+
+    public void updateGroceryList(GroceryList groceryList) {
+
+
+    }
+
+    public long insertGroceryItemListLink(long groceryListID, long groceryItemID){
+        //this function inserts a link between a groceryList and a grocery item
+
+        long insertedLinkID = -1;
+
+        //TODO insertlink
+        return insertedLinkID;
+    }
+
+    public  long insertGroceryItem(GroceryItem itemCourse, long groceryListID){
         // Function that takes as an input the groceryItem to insert in the database, and the groceryListID of the list we wish to link it to.
         // returns: insertedID (value of the ID for the newly inserted object, and -1 if it failed.
 
@@ -55,6 +99,7 @@ public class DatabaseAccess {
         values.put("item_quantity", itemCourse.getQuantityItem());
         values.put("item_unit", itemCourse.getUnitItem());
         insertedID = database.insert("GroceryItem_table", null, values);
+
 
         return insertedID;
     }

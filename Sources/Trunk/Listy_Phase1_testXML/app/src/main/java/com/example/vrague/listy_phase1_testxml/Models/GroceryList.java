@@ -13,13 +13,13 @@ public class GroceryList implements Serializable {
 
     private boolean was_updated;
 
-    private int id;
+    private long id;
 
     private String groceryListName;
 
     private List<GroceryItem> groceryItemList;
 
-    public GroceryList(boolean was_updated, int id, String groceryListName, List<GroceryItem> itemCourses) {
+    public GroceryList(boolean was_updated, long id, String groceryListName, List<GroceryItem> itemCourses) {
         this.was_updated = was_updated;
         this.id = id;
         this.groceryListName = groceryListName;
@@ -27,7 +27,8 @@ public class GroceryList implements Serializable {
     }
 
     public GroceryList() {
-        groceryItemList = new ArrayList<GroceryItem>() ;
+        this.setGroceryItemList(new ArrayList<GroceryItem>());
+        this.setId(-1);
 
     }
 
@@ -40,11 +41,11 @@ public class GroceryList implements Serializable {
         this.was_updated = was_updated;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -68,6 +69,14 @@ public class GroceryList implements Serializable {
         this.getGroceryItemList().add(groceryItem);
     }
 
+    public GroceryItem getItemFromGroceryListByPosition (int pos) {
 
+        GroceryItem groceryItem;
+
+        groceryItem = this.getGroceryItemList().get(pos);
+
+        return groceryItem;
+
+    }
 
 }
