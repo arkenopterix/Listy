@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@color/colorDark"
+    tools:context=".MainActivity">
+
+        <LinearLayout
+            android:id="@+id/main_lltTopOption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true">
+
+            <Button
+                android:id="@+id/main_btnSaveCurrentList"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginRight="10dp"
+
+                android:text="SAVE"/>
+
+            <Button
+                android:id="@+id/main_btnLoadOtherList"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginRight="10dp"
+
+                android:text="LOAD"/>
+
+            <Button
+                android:id="@+id/main_btnAddFavItem"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+
+
+                android:text="FAV"/>
+
+        </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/main_lltBottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        >
+        <Button
+            android:id="@+id/main_btnAdd"
+            android:layout_width="70dp"
+            android:layout_height="50dp"
+            android:text="Add"
+            android:background="@drawable/rounded_corner_button"
+            android:layout_marginRight="10dp"/>
+        <Button
+            android:id="@+id/main_btnAddFav"
+            android:layout_width="70dp"
+            android:layout_height="50dp"
+            android:text="AddFav"
+            android:background="@drawable/rounded_corner_button"/>
+    </LinearLayout>
+
+
+    <EditText
+        android:id="@+id/main_edListName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Nom liste"
+        android:layout_below="@id/main_lltTopOption"
+        />
+
+    <ListView
+        android:id="@+id/main_listViewItem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/main_edListName"
+        android:layout_above="@id/main_lltBottom"/>
+
+
+</RelativeLayout>
+
+
+
