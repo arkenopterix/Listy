@@ -96,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
         newItem.setQuantityItem("defrf");
         newItem.setUnitItem("ededd");
 
-        databaseAccess.insertItemCourse(newItem);
+        databaseAccess.insertGroceryItem(newItem);
         databaseAccess.close();
     }
 
@@ -172,7 +172,7 @@ public class MainActivity extends AppCompatActivity {
             TextView txtName = (TextView) convertView.findViewById(R.id.list_nameItem);
             TextView txtQuantity = (TextView) convertView.findViewById(R.id.list_quantityItem);
             TextView txtUnit = (TextView) convertView.findViewById(R.id.list_unitItem);
-            GroceryItem itemCourse = currentGroceryItemList.get(position);
+            GroceryItem itemCourse = currentGroceryList.getItemFromGroceryListByPosition(position);
             txtName.setText(itemCourse.getNameItem());
             txtQuantity.setText(itemCourse.getQuantityItem());
             txtUnit.setText(itemCourse.getUnitItem());

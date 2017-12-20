@@ -99,7 +99,7 @@ public class EditGroceryItemActivity extends AppCompatActivity {
         newItem.setQuantityItem(edit_etQuantity.getText().toString());
         newItem.setUnitItem(edit_etUnit.getText().toString());
 
-        databaseAccess.insertItemCourse(newItem);
+        databaseAccess.insertGroceryItem(newItem);
         databaseAccess.close();
 
         this.finish();

@@ -74,7 +74,7 @@ public class FavoriteActivity extends AppCompatActivity  {
         GroceryItem item = new GroceryItem();
         item.setNameItem(favItemList[index]);
 
-        databaseAccess.insertItemCourse(item);
+        databaseAccess.insertGroceryItem(item);
         databaseAccess.close();
         this.finish();
     }
